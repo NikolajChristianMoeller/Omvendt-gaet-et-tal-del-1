@@ -2,6 +2,8 @@
 
 window.addEventListener("load", main);
 
+let min = 0;
+let max = 100;
 let currentGuess;
 let attempts = 0;
 let attemptList = [];
@@ -34,23 +36,25 @@ function handleCorrect() {
     correct();
 }
 
-function tooHigh() {
+function handleTooHigh() {
     attempts++;
     const message = `Jeg gættede på ${currentGuess}, det var for højt.`;
     showMessage(message);
     logAttempt(message);
     newGuess();
+    console.log(max)
 }
 
-function tooLow() {
+function handleTooLow() {
     attempts++;
     const message = `Jeg gættede på ${currentGuess}, det var for lavt.`;
     showMessage(message);
     logAttempt(message);
     newGuess();
+    console.log(min)
 }
 
-function correct() {
+function handleCorrect() {
     attempts++;
     const message = `Jeg gættede korrekt med ${currentGuess}! Det tog mig ${attempts} forsøg.`;
     showMessage(message);
@@ -59,7 +63,7 @@ function correct() {
 }
 
 function newGuess() {
-    currentGuess = Math.floor(Math.random() * 100) + 1;
+    currentGuess = Math.floor((min + max) / 2);
     showGuess();
 }
 

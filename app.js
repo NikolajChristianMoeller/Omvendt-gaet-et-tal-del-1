@@ -26,6 +26,7 @@ function setupEventListeners() {
 
 function handleTooHigh() {
     tooHigh();
+
 }
 
 function handleTooLow() {
@@ -41,6 +42,7 @@ function handleTooHigh() {
     const message = `Jeg gættede på ${currentGuess}, det var for højt.`;
     showMessage(message);
     logAttempt(message);
+    max = currentGuess -1
     newGuess();
     console.log(max)
 }
@@ -50,6 +52,7 @@ function handleTooLow() {
     const message = `Jeg gættede på ${currentGuess}, det var for lavt.`;
     showMessage(message);
     logAttempt(message);
+    min = currentGuess +1
     newGuess();
     console.log(min)
 }
@@ -63,8 +66,19 @@ function handleCorrect() {
 }
 
 function newGuess() {
+    if (min > max) {
+        handleLie();
+        return;
+    }
+
     currentGuess = Math.floor((min + max) / 2);
     showGuess();
+}
+
+function handleLie() {
+    const message = `Du lyver! Det er nødt til at være ${currentGuess}.`;
+    showMessage(message);
+    disableButtons();
 }
 
 function showGuess() {

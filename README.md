@@ -1,3 +1,1 @@
-Repository til min applikation:
-
-https://nikolajchristianmoeller.github.io/-Omvendt-g-t-et-tal---del-1/
+## Reverse Guess a Number Part 1
